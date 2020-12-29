@@ -1,6 +1,6 @@
 # FastLED for the web
 
-[![demo](.images/demo.png)](https://jandelgado.github.io/fastled-wasm)
+[![demo](.images/fastled.png)](https://jandelgado.github.io/fastled-wasm)
 
 This project compiles the embedded C++ [FastLED](http://fastled.io) library and
 some of the examples to Web Assebly (WASM) and uses the browser as a virtual RGB
