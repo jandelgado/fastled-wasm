@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta id="viewport" name="viewport" content ="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta charset="utf-8" />
+        <link href="styles.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
+        <script type="text/javascript" src="led.js"></script>
+        <title>FastLED Web Assembly (WASM) Demo</title>
+    </head>
+
+    <body onresize="LED.onresize()" >
+        <div class="fullsize">
+            <div>
+                <h1>FastLED Web Assembly (WASM) Demo</h1>
+
+                <p class="infobox">
+                <b>What?</b> Some of the <a href="http://fastled.io">FastLED</a>
+                <a href="https://github.com/FastLED/FastLED/tree/master/examples">Demos</a>
+                compiled for Web Assembly and now run in the browser using virtual
+                LEDs. <br>
+                <b>Why?</b> Use it for simulation/testing and demonstration
+                of FastLED projects.
+                </p>
+                <p>
+                Demos: <a href="javascript:LED.demo('demo_reel100');">Reel100</a>
+                <a href="javascript:LED.demo('demo_pride');">Pride2015</a>
+                <a href="javascript:LED.demo('demo_twinklefox');">TwinkleFox</a> 
+                <a href="javascript:LED.demo('demo_fire2012');">Fire2012</a> 
+                | For more info visit <a href="https://github.com/jandelgado/fastled-wasm">
+                    https://github.com/jandelgado/fastled-wasm</a>
+                </p>
+            </div>
+
+            <div id="root">
+            </div>
+        </div>
+
+        <script>
+            var Module = {
+                onRuntimeInitialized: function() {
+                    console.log("WASM runtime initialized.");
+                        LED.start();
+                }
+            };
+        </script>
+        <script type="text/javascript" src="fastled.js"></script>
+    </body>
+
+</html>
