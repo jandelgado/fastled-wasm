@@ -1,0 +1,7 @@
+*.pkl
+parser.out
+web/fastled.js
+web/fastled.wasm
+*.o
+*~
+bin/
