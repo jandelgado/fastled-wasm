@@ -22,7 +22,7 @@ all: $(OUT)/fastled.wasm
 $(OUT): 
 	mkdir -p $(OUT)
 
-$(OUT)/fastled.js: $(CPPSRC)
+$(OUT)/fastled.js: $(OUT) $(CPPSRC)
 	em++ --std=c++11 -Os --closure 1 --bind -I$(SRC) -I$(FASTLED_SRC) \
 		-D FASTLED_HOST -D ARDUINO\
 		-s ASSERTIONS=2 \
