@@ -9,7 +9,7 @@ OUT:=web
 FASTLED_SRC:=./FastLED/src
 CPPSRC:=$(SRC)/Arduino.cpp \
 	    $(SRC)/demo_reel100.cpp $(SRC)/demo_pride.cpp \
-	    $(SRC)/demo_twinklefox.cpp $(SRC)/demo_fire.cpp \
+	    $(SRC)/demo_twinklefox.cpp $(SRC)/demo_fire.cpp $(SRC)/demo_pacifica.cpp\
 	    $(FASTLED_SRC)/FastLED.cpp \
 		$(FASTLED_SRC)/colorutils.cpp $(FASTLED_SRC)/colorpalettes.cpp \
 		$(FASTLED_SRC)/hsv2rgb.cpp $(FASTLED_SRC)/lib8tion.cpp
