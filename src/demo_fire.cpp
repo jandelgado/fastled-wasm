@@ -40,26 +40,26 @@ bool gReverseDirection = false;
 // COOLING: How much does the air cool as it rises?
 // Less cooling = taller flames.  More cooling = shorter flames.
 // Default 50, suggested range 20-100 
-#define COOLING  120
+#define COOLING  50
 
 // SPARKING: What chance (out of 255) is there that a new spark will be lit?
 // Higher chance = more roaring fire.  Lower chance = more flickery fire.
 // Default 120, suggested range 50-200.
 #define SPARKING 120
 
-
 void Fire2012(CRGB* leds, uint16_t len)
 {
 // Array of temperature readings at each simulation cell
-//  static byte *heat = nullptr;
-static byte heat[100];
+    static byte *heat = nullptr;
+    static uint16_t curlen = 0;
+    if (curlen != len) {
+       // JD this is a quick hack to make the original code run.
+       // JD TODO this buffer should be also passed in as an argument
+       delete [] heat;
+       heat = new byte[len]();
+       curlen = len;
+    }
 
-  // if (!heat) {
-  //     // JD this is a quick hack to make the original code run.
-  //     // JD TODO this buffer should be also passed in as an argument
-  //     heat = new byte[len];
-  //     memset(heat, 0, len);
-  // }
 
   // Step 1.  Cool down every cell a little
     for( int i = 0; i < len; i++) {

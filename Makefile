@@ -18,12 +18,15 @@ $(OUT)/fastled.wasm: $(CPPSRC)
 
 all: $(OUT)/fastled.wasm
 
+#		-fsanitize=address -g2
 $(OUT)/fastled.js: $(CPPSRC)
 	em++ --std=c++11 -Os --closure 1 --bind -I$(SRC) -I$(FASTLED_SRC) \
 		-D FASTLED_HOST -D ARDUINO\
 		-s ASSERTIONS=2 \
 		-s WASM=1\
 		-s EXPORTED_RUNTIME_METHODS='["ccall","cwrap"]'\
+		-s ALLOW_MEMORY_GROWTH=1 \
+		--closure 1 \
 		-o $(OUT)/fastled.js \
 		-x c++ \
 		$(CPPSRC) 

@@ -35,7 +35,11 @@ a:link, a:visited {
     font-size: 20px;
 }
 
-#root {
+canvas {
+    border: 1px solid darkgray;
+}
+
+#matrix-container {
     background-color: black;
     flex: 1 1 auto;
 }
