@@ -23,11 +23,21 @@
                 of FastLED projects.
                 </p>
                 <p>
-                Demos: <a href="javascript:LED.demo('demo_reel100');">Reel100</a>
-                <a href="javascript:LED.demo('demo_pride');">Pride2015</a>
-                <a href="javascript:LED.demo('demo_twinklefox');">TwinkleFox</a> 
-                <a href="javascript:LED.demo('demo_fire2012');">Fire2012</a> 
-                <a href="javascript:LED.demo('demo_pacifica');">Pacifica</a> 
+                Demos: <a href="javascript:LED.setDemo('demo_reel100');">Reel100</a>
+                <a href="javascript:LED.setDemo('demo_pride');">Pride2015</a>
+                <a href="javascript:LED.setDemo('demo_twinklefox');">TwinkleFox</a> 
+                <a href="javascript:LED.setDemo('demo_fire2012');">Fire2012</a> 
+                <a href="javascript:LED.setDemo('demo_pacifica');">Pacifica</a> 
+                <br/>
+                Size: <a href="javascript:LED.setSize(5,5);">5x5</a> 
+                <a href="javascript:LED.setSize(8,8);">8x8</a> 
+                <a href="javascript:LED.setSize(10,10);">10x10</a> 
+                <a href="javascript:LED.setSize(16,16);">16x16</a> 
+                <a href="javascript:LED.setSize(20,20);">20x20</a> 
+                <a href="javascript:LED.setSize(25,25);">25x25</a>
+                <a href="javascript:LED.setSize(50,50);">50x50</a> 
+                   (or <a href="?cols=20&cols=5">pass cols and rows query parameters)</a>|
+                Numbers: <a href="javascript:LED.toggleNumbers();">Toggle</a> 
                 <p>
                 For more info visit the <a href="https://github.com/jandelgado/fastled-wasm">
                     github project page</a>.
@@ -35,7 +45,11 @@
                 </p>
             </div>
 
-            <div id="root">
+            <div id="stripe-container">
+                <canvas id="ledstripe"/>
+            </div>
+            <div id="matrix-container">
+                <canvas id="ledmatrix"/>
             </div>
         </div>
 
@@ -43,7 +57,17 @@
             var Module = {
                 onRuntimeInitialized: function() {
                     console.log("WASM runtime initialized.");
-                        LED.start();
+                        [cols, rows] = [8,8];
+
+                        // cols and rows can be overriden in the URL
+                        const params= new URL(window.location).searchParams;
+                        if (params.get("cols")) {
+                            cols = parseInt(params.get('cols'));
+                        }
+                        if (params.get("rows")) {
+                            rows = parseInt(params.get('rows'));
+                        }
+                        LED.start(cols, rows);
                 }
             };
         </script>
