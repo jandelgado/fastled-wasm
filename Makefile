@@ -1,7 +1,7 @@
 # makefile for FastLED-WASM
 # EMSDK environment variable must point to emscripten installation dir
 # (c) copyright 2020 Jan Delgado
-.PHONY: clean tags server all
+.PHONY: clean tags server
 
 SRC:=src
 OUT:=web
@@ -21,7 +21,7 @@ all: $(OUT)/fastled.wasm
 #		-fsanitize=address -g2
 $(OUT)/fastled.js: $(CPPSRC)
 	em++ --std=c++11 -Os --closure 1 --bind -I$(SRC) -I$(FASTLED_SRC) \
-		-D FASTLED_HOST -D ARDUINO\
+		-D FASTLED_NO_MCU -D ARDUINO\
 		-s ASSERTIONS=2 \
 		-s WASM=1\
 		-s EXPORTED_RUNTIME_METHODS='["ccall","cwrap"]'\

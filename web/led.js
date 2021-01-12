@@ -36,7 +36,7 @@ var LED = (function() {
     }
 
     function drawMatrix(ctx, rgbs, size, cols, rows, mapper) {
-        const fontSize = 12;
+        const fontSize = 10;
         const margin = (size <= 4 ) ? 0 : MARGIN;
         ctx.font = `${fontSize}px Arial`;
         for (let row = 0; row < rows; row++) {
@@ -53,7 +53,7 @@ var LED = (function() {
                               size - 2*margin + 1, 
                               size - 2*margin + 1);
 
-                if (_showNumbers && size >= fontSize*2) {
+                if (_showNumbers && size >= fontSize*1.5) {
                     ctx.fillStyle = "white";
                     ctx.fillText( `${i}`, col*size + 1, row*size + fontSize);
                 }
