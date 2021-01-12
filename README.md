@@ -47,4 +47,3 @@ tbd
 ## Author & License
 
 (c) Copyright 2020-2021 by Jan Delgado, License: MIT
-
